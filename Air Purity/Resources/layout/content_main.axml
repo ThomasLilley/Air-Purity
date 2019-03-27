@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout 
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+		<Button
+			android:text="Fetch Data"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="false"
+			android:id="@+id/btn1"
+			android:textAllCaps="false" />
+		<TextView
+			android:text="Date"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="false"
+			android:id="@+id/txt1" />
+		<TextView
+			android:text="Sensor"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="false"
+			android:layout_below="@+id/txt1"
+			android:id="@+id/txt2" />
+		<TextView
+			android:text="Type"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="false"
+			android:layout_below="@+id/txt2"
+			android:id="@+id/txt3" />
+		<TextView
+			android:text="Value"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="false"
+			android:layout_below="@+id/txt3"
+			android:id="@+id/txt4" />
+	</LinearLayout>
+</ScrollView>		
