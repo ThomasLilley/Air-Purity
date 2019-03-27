@@ -99,11 +99,7 @@ namespace Air_Purity
                 txt2.Text = txt2.Text + "\n" + obj["sensor_id"];
                 txt3.Text = txt3.Text + "\n" + obj["sensor_type"];
                 txt4.Text = txt4.Text + "\n" + obj["value"];
-                /*if (count < maxSize)
-                {
-                    valueArray[count] = obj["value"];
-                }
-                count++;*/
+             
             }
         }
 
