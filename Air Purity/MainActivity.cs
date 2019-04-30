@@ -17,6 +17,9 @@ using System.Json;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
+using Microcharts;
+using SkiaSharp;
+using Microcharts.Droid;
 
 namespace Air_Purity
 {
@@ -56,11 +59,13 @@ namespace Air_Purity
             };
         }
 
-            protected async void GetJson()
+        protected async void GetJson()
         {
-            string url = "http://35.234.88.236/index.php/sensors/getsensordata?sensorid=1";
+            string url = "http://35.234.88.236/index.php/sensors/getsensordata";
             JsonValue json = await FetchJsonAsync(url);
-            ParseAndDisplay(json);
+            ParseAndDisplay(json, "LPG", 1);
+            ParseAndDisplay(json, "CO", 2);
+            ParseAndDisplay(json, "SMOKE", 3);
         }
 
         private async Task<JsonValue> FetchJsonAsync(string url)
@@ -86,23 +91,196 @@ namespace Air_Purity
             }
         }
 
-        private void ParseAndDisplay(JsonValue json)
+        private void ParseAndDisplay(JsonValue json, string Jval, int Gval)
         {
-            TextView txt1 = FindViewById<TextView>(Resource.Id.txt1);
-            TextView txt2 = FindViewById<TextView>(Resource.Id.txt2);
-            TextView txt3 = FindViewById<TextView>(Resource.Id.txt3);
-            TextView txt4 = FindViewById<TextView>(Resource.Id.txt4);
+            //TextView txt1 = FindViewById<TextView>(Resource.Id.txt1);
+            //TextView txt2 = FindViewById<TextView>(Resource.Id.txt2);
+            //TextView txt3 = FindViewById<TextView>(Resource.Id.txt3);
+            //TextView txt4 = FindViewById<TextView>(Resource.Id.txt4);
 
-            foreach (JsonValue obj in json)
+            //foreach (JsonValue obj in json)
+            //{
+            //    txt1.Text = txt1.Text + "\n" + obj["time_stamp"];
+            //    txt2.Text = txt2.Text + "\n" + obj["sensor_id"];
+            //    txt3.Text = txt3.Text + "\n" + obj["sensor_type"];
+            //    txt4.Text = txt4.Text + "\n" + obj["value"];
+
+            //}    
+            if (Gval == 1)
             {
-                txt1.Text = txt1.Text + "\n" + obj["time_stamp"];
-                txt2.Text = txt2.Text + "\n" + obj["sensor_id"];
-                txt3.Text = txt3.Text + "\n" + obj["sensor_type"];
-                txt4.Text = txt4.Text + "\n" + obj["value"];
-             
-            }
-        }
+                int maxSize = 10;
+                int JsonSize = 0;
+                int count = 0;
+                Console.WriteLine("counting");
+                foreach (JsonValue obj in json)
+                {
+                    if (count < maxSize)
+                    {
+                        JsonSize++;
+                    }
+                    count++;
+                }
 
+                float[] valueArray = new float[JsonSize];
+                count = 0; foreach (JsonValue obj in json)
+                {
+                    if (count < maxSize)
+                    {
+                        Console.WriteLine(obj[Jval].ToString());
+                        valueArray[count] = obj[Jval];
+
+                    }
+                    count++;
+                }
+
+                foreach (var item in valueArray)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+
+
+                Console.WriteLine("Writing Graph");
+                var entries1 = new List<Entry>();
+
+                count = 0;
+                foreach (int item in valueArray)
+                {
+                    Console.WriteLine(item.ToString());
+                    entries1.Add(new Entry(valueArray[count])
+                    {
+                        Label = count.ToString(),
+                        Color = SKColor.Parse("#90D585"),
+                        ValueLabel = valueArray[count].ToString()
+                    });
+                    count++;
+                }
+
+                var chart = new LineChart()
+                {
+                    Entries = entries1,
+                    BackgroundColor = SKColors.Transparent
+                };
+
+                var chartView = FindViewById<ChartView>(Resource.Id.chartView);
+                chartView.Chart = chart;
+            }
+            if (Gval == 2)
+            {
+                int maxSize = 10;
+                int JsonSize = 0;
+                int count = 0;
+                Console.WriteLine("counting");
+                foreach (JsonValue obj in json)
+                {
+                    if (count < maxSize)
+                    {
+                        JsonSize++;
+                    }
+                    count++;
+                }
+
+                float[] valueArray = new float[JsonSize];
+                count = 0; foreach (JsonValue obj in json)
+                {
+                    if (count < maxSize)
+                    {
+                        Console.WriteLine(obj[Jval].ToString());
+                        valueArray[count] = obj[Jval];
+
+                    }
+                    count++;
+                }
+
+                foreach (var item in valueArray)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+                Console.WriteLine("Writing Graph");
+                var entries2 = new List<Entry>();
+
+                count = 0;
+                foreach (int item in valueArray)
+                {
+                    Console.WriteLine(item.ToString());
+                    entries2.Add(new Entry(valueArray[count])
+                    {
+                        Label = count.ToString(),
+                        Color = SKColor.Parse("#4e81d5"),
+                        ValueLabel = valueArray[count].ToString()
+                    });
+                    count++;
+                }
+
+                var chart = new LineChart()
+                {
+                    Entries = entries2,
+                    BackgroundColor = SKColors.Transparent
+                };
+
+                var chartView = FindViewById<ChartView>(Resource.Id.chartView2);
+                chartView.Chart = chart;
+            }
+            if (Gval == 3)
+            {
+                int maxSize = 10;
+                int JsonSize = 0;
+                int count = 0;
+                Console.WriteLine("counting");
+                foreach (JsonValue obj in json)
+                {
+                    if (count < maxSize)
+                    {
+                        JsonSize++;
+                    }
+                    count++;
+                }
+
+                float[] valueArray = new float[JsonSize];
+                count = 0; foreach (JsonValue obj in json)
+                {
+                    if (count < maxSize)
+                    {
+                        Console.WriteLine(obj[Jval].ToString());
+                        valueArray[count] = obj[Jval];
+
+                    }
+                    count++;
+                }
+
+                foreach (var item in valueArray)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+
+                Console.WriteLine("Writing Graph");
+                var entries3 = new List<Entry>();
+
+                count = 0;
+                foreach (int item in valueArray)
+                {
+                    Console.WriteLine(item.ToString());
+                    entries3.Add(new Entry(valueArray[count])
+                    {
+                        Label = count.ToString(),
+                        Color = SKColor.Parse("#d5664e"),
+                        ValueLabel = valueArray[count].ToString()
+                    });
+                    count++;
+                }
+
+                var chart = new LineChart()
+                {
+                    Entries = entries3,
+                    BackgroundColor = SKColors.Transparent
+                };
+
+                var chartView = FindViewById<ChartView>(Resource.Id.chartView3);
+                chartView.Chart = chart;
+            }
+
+
+
+        }
     }
 }
 

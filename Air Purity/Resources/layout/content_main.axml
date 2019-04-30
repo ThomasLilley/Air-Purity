@@ -14,31 +14,34 @@
 			android:id="@+id/btn1"
 			android:textAllCaps="false" />
 		<TextView
-			android:text="Date"
+			android:text="LPG"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_centerInParent="false"
-			android:id="@+id/txt1" />
+			android:id="@+id/txt1" />		
+		<microcharts.droid.ChartView
+            android:id="@+id/chartView"
+            android:layout_width="match_parent"
+            android:layout_height="160dp" />
 		<TextView
-			android:text="Sensor"
+			android:text="CO"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_centerInParent="false"
-			android:layout_below="@+id/txt1"
 			android:id="@+id/txt2" />
+		<microcharts.droid.ChartView
+            android:id="@+id/chartView2"
+            android:layout_width="match_parent"
+            android:layout_height="160dp" />
 		<TextView
-			android:text="Type"
+			android:text="Smoke"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_centerInParent="false"
-			android:layout_below="@+id/txt2"
 			android:id="@+id/txt3" />
-		<TextView
-			android:text="Value"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_centerInParent="false"
-			android:layout_below="@+id/txt3"
-			android:id="@+id/txt4" />
+		<microcharts.droid.ChartView
+            android:id="@+id/chartView3"
+            android:layout_width="match_parent"
+            android:layout_height="160dp" />
 	</LinearLayout>
 </ScrollView>		
