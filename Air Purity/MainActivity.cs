@@ -108,28 +108,22 @@ namespace Air_Purity
             //}    
             if (Gval == 1)
             {
-                int maxSize = 10;
                 int JsonSize = 0;
                 int count = 0;
                 Console.WriteLine("counting");
                 foreach (JsonValue obj in json)
-                {
-                    if (count < maxSize)
-                    {
-                        JsonSize++;
-                    }
-                    count++;
+                {                    
+                JsonSize++;  
+                count++;
                 }
 
-                float[] valueArray = new float[JsonSize];
-                count = 0; foreach (JsonValue obj in json)
-                {
-                    if (count < maxSize)
-                    {
-                        Console.WriteLine(obj[Jval].ToString());
-                        valueArray[count] = obj[Jval];
-
-                    }
+                count = 0;
+                float[] valueArray = new float[20];
+                for(int i = JsonSize - 20; i < JsonSize; i++)
+                {                                   
+                    JsonValue obj = json[i];
+                    Console.WriteLine(obj[Jval].ToString());
+                    valueArray[count] = obj[Jval];
                     count++;
                 }
 
@@ -166,28 +160,22 @@ namespace Air_Purity
             }
             if (Gval == 2)
             {
-                int maxSize = 10;
                 int JsonSize = 0;
                 int count = 0;
                 Console.WriteLine("counting");
                 foreach (JsonValue obj in json)
                 {
-                    if (count < maxSize)
-                    {
-                        JsonSize++;
-                    }
+                    JsonSize++;
                     count++;
                 }
 
-                float[] valueArray = new float[JsonSize];
-                count = 0; foreach (JsonValue obj in json)
+                count = 0;
+                float[] valueArray = new float[20];
+                for (int i = JsonSize - 20; i < JsonSize; i++)
                 {
-                    if (count < maxSize)
-                    {
-                        Console.WriteLine(obj[Jval].ToString());
-                        valueArray[count] = obj[Jval];
-
-                    }
+                    JsonValue obj = json[i];
+                    Console.WriteLine(obj[Jval].ToString());
+                    valueArray[count] = obj[Jval];
                     count++;
                 }
 
@@ -222,28 +210,22 @@ namespace Air_Purity
             }
             if (Gval == 3)
             {
-                int maxSize = 10;
                 int JsonSize = 0;
                 int count = 0;
                 Console.WriteLine("counting");
                 foreach (JsonValue obj in json)
                 {
-                    if (count < maxSize)
-                    {
-                        JsonSize++;
-                    }
+                    JsonSize++;
                     count++;
                 }
 
-                float[] valueArray = new float[JsonSize];
-                count = 0; foreach (JsonValue obj in json)
+                count = 0;
+                float[] valueArray = new float[20];
+                for (int i = JsonSize - 20; i < JsonSize; i++)
                 {
-                    if (count < maxSize)
-                    {
-                        Console.WriteLine(obj[Jval].ToString());
-                        valueArray[count] = obj[Jval];
-
-                    }
+                    JsonValue obj = json[i];
+                    Console.WriteLine(obj[Jval].ToString());
+                    valueArray[count] = obj[Jval];
                     count++;
                 }
 
