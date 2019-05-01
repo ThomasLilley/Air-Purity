@@ -61,11 +61,19 @@ namespace Air_Purity
 
         protected async void GetJson()
         {
-            string url = "http://35.234.88.236/index.php/sensors/getsensordata";
-            JsonValue json = await FetchJsonAsync(url);
-            ParseAndDisplay(json, "LPG", 1);
-            ParseAndDisplay(json, "CO", 2);
-            ParseAndDisplay(json, "SMOKE", 3);
+            try
+            {
+                string url = "http://35.234.88.236/index.php/sensors/getsensordata";
+                JsonValue json = await FetchJsonAsync(url);
+                ParseAndDisplay(json, "LPG", 1);
+                ParseAndDisplay(json, "CO", 2);
+                ParseAndDisplay(json, "SMOKE", 3);
+            }
+            catch
+            {
+                string toast = string.Format("Error - Check connection");
+                Toast.MakeText(this, toast, ToastLength.Long).Show();
+            }
         }
 
         private async Task<JsonValue> FetchJsonAsync(string url)
